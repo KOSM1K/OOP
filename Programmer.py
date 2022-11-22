@@ -9,7 +9,7 @@ class Programmer(Person):
 
         self.job = 'Programmer'
         printCLR('gre', '[I]')
-        print("job successfully set as 'Programmer'")
+        print(" job successfully set as 'Programmer'")
 
         self.setSpeedOfCoding(speedOfCoding)
         self.setPortfolio(portfolio)
