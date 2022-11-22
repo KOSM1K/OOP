@@ -1,4 +1,5 @@
 from PersonClass import Person
+from printer import printCLR
 import time
 
 
@@ -7,7 +8,8 @@ class Programmer(Person):
         super().__init__(name, age, gender, comments)
 
         self.job = 'Programmer'
-        print("[I] job successfully set as 'Programmer'")
+        printCLR('gre', '[I]')
+        print(" job successfully set as 'Programmer'")
 
         self.setSpeedOfCoding(speedOfCoding)
         self.setPortfolio(portfolio)
@@ -15,11 +17,15 @@ class Programmer(Person):
     def setSpeedOfCoding(self, speed):
         if str(type(speed)) in ["<class 'int'>", "<class 'float'>"]:
             self.speedOfCoding = speed
-            print('[I] speed of coding set to ' + str(self.speedOfCoding))
+            printCLR('gre', '[I]')
+            print(' speed of coding set to ' + str(self.speedOfCoding))
+
         elif str(type(speed)) == "<class 'str'>":
             self.speedOfCoding = float(speed)
-            print('[I] speed of coding set to ' + str(self.speedOfCoding))
+            printCLR('gre', '[I]')
+            print(' speed of coding set to ' + str(self.speedOfCoding))
         else:
+            printCLR('yel', '[W]')
             print("[W] speed of coding is NOT set. you can NOT use function 'do some coding'."
                   " speed must be one of int, float, str")
 
@@ -34,9 +40,8 @@ class Programmer(Person):
             cnt += 1
 
         if newProjectName != projectName:
-            print(
-                "[I] '%s' already exists. it will be added to portfolio with name '%s'" % (projectName, newProjectName))
-
+            printCLR('gre', '[I]')
+            print(" '%s' already exists. it will be added to portfolio with name '%s'" % (projectName, newProjectName))
         self.portfolio[newProjectName] = [difficulty, projectComment]
 
         return newProjectName
@@ -45,11 +50,14 @@ class Programmer(Person):
         try:
             if str(type(difficulty)) in ["<class 'int'>", "<class 'float'>"]:
                 for i in range(1, 101):
-                    print('[P] doing some coding (%s)... ' % projectName + str(i) + '%', end='')
+                    printCLR('cya', '[P]')
+                    print(' doing some coding (%s)... ' % projectName + str(i) + '%', end='')
                     time.sleep(difficulty / self.speedOfCoding)
                     print('\r', end='')
 
-                print('\r[I] some coding is done.')
+                print('\r', end='')
+                printCLR('gre', '[I]')
+                print('some coding is done.')
                 return self.addProjectToPortfolio(projectName, difficulty, projectComment)
             else:
                 raise ValueError('difficulty must be int or float')
@@ -78,7 +86,8 @@ class Programmer(Person):
 # это классная важная штука но я подумал что ни в один из классов ее помещать нельзя
 def fromPersonToProgrammer(per: Person, speedOfCoding=None, portfolio: dict = {}):
     pro = Programmer(per.getName(), per.getAge(), per.getGender(), per.getComments(), speedOfCoding, portfolio)
-    print('[I] successfully converted from %s to %s' % (str(type(per)), str(type(pro))))
+    printCLR('gre', '[I]')
+    print(' successfully converted from %s to %s' % (str(type(per)), str(type(pro))))
     return pro
 
 
