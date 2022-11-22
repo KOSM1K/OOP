@@ -57,7 +57,7 @@ class Programmer(Person):
 
                 print('\r', end='')
                 printCLR('gre', '[I]')
-                print('some coding is done.')
+                print(' some coding is done.')
                 return self.addProjectToPortfolio(projectName, difficulty, projectComment)
             else:
                 raise ValueError('difficulty must be int or float')
