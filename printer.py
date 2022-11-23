@@ -1,5 +1,5 @@
 # colors specified for current purpose
-# in future make a class for controlling stack of printing to console.
+# in future make a class for controlling queue of printing to console.
 
 colors = {
     'bas': '\033[0m',
