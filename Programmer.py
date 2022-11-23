@@ -1,10 +1,13 @@
 from PersonClass import Person
+from ProjectClass import Project
 from printer import printCLR
 import time
 
 
 class Programmer(Person):
-    def __init__(self, name=None, age=None, gender=None, comments=None, speedOfCoding=None, portfolio: dict = {}):
+    def __init__(self, name: (str, list, None) = None, age: (int, float, str, None) = None,
+                 gender: (str, bool, None) = None, comments=None, speedOfCoding: (int, float, str, None) = None,
+                 portfolio: list[Project] = []):
         super().__init__(name, age, gender, comments)
 
         self.job = 'Programmer'
