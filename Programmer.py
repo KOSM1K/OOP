@@ -26,7 +26,7 @@ class Programmer(Person):
             print(' speed of coding set to ' + str(self.speedOfCoding))
         else:
             printCLR('yel', '[W]')
-            print("[W] speed of coding is NOT set. you can NOT use function 'do some coding'."
+            print(" speed of coding is NOT set. you can NOT use function 'do some coding'."
                   " speed must be one of int, float, str")
 
     def setPortfolio(self, portfolio):
@@ -50,8 +50,9 @@ class Programmer(Person):
         try:
             if str(type(difficulty)) in ["<class 'int'>", "<class 'float'>"]:
                 for i in range(1, 101):
-                    printCLR('cya', '[P]')
-                    print(' doing some coding (%s)... ' % projectName + str(i) + '%', end='')
+                    # printCLR('cya', '[P]')
+                    # print(' doing some coding (%s)... ' % projectName + str(i) + '%', end='')
+                    printCLR('cya', '[P] doing some coding (%s)... ' % projectName + str(i) + '%')
                     time.sleep(difficulty / self.speedOfCoding)
                     print('\r', end='')
 
