@@ -1,3 +1,6 @@
+# colors specified for current purpose
+# in future make a class for controlling stack of printing to console.
+
 colors = {
     'bas': '\033[0m',
     'gre': '\033[32m',
