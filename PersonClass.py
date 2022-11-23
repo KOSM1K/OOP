@@ -1,13 +1,15 @@
 from printer import printCLR
 
+
 class Person():
-    def __init__(self, name=None, age=None, gender=None, comments=None):
+    def __init__(self, name: (str, list, None) = None, age: (int, float, str, None) = None,
+                 gender: (str, bool, None) = None, comments=None):
         self.setName(name)
         self.setAge(age)
         self.setGender(gender)
         self.setComments(comments)
 
-    def setName(self, name):
+    def setName(self, name: (str, list, None) = None):
         if str(type(name)) == "<class 'str'>":
             self.name = name
             printCLR('gre', '[I]')
@@ -19,9 +21,9 @@ class Person():
         elif str(type(name)) == "<class 'NoneType'>":
             self.name = None
             printCLR('yel', '[W]')
-            print('name is NOT set')
+            print(' name is NOT set')
 
-    def setAge(self, age):
+    def setAge(self, age: (int, float, str, None) = None):
         if str(type(age)) in ["<class 'int'>", "<class 'float'>"]:
             if age >= 0:
                 self.age = age
@@ -30,21 +32,23 @@ class Person():
             else:
                 raise ValueError('Age must be positive')
         elif str(type(age)) == "<class 'str'>":
-            age_ = int(age)
-            if age_ >= 0:
-                self.age = age_
-                printCLR('gre', '[I]')
-                print(' age successfully set to ' + str(self.age))
-            else:
-                raise ValueError('Age must be positive')
+            try:
+                age_ = int(age)
+                if age_ >= 0:
+                    self.age = age_
+                    printCLR('gre', '[I]')
+                    print(' age successfully set to ' + str(self.age))
+
+                else:
+                    raise ValueError('Age must be positive')
+            except:
+                raise ValueError('Age must be able to be converted to int')
         elif str(type(age)) == "<class 'NoneType'>":
             self.age = None
             printCLR('yel', '[W]')
             print(' age is NOT set')
-        else:
-            raise ValueError('Age type must be one of int, float, str')
 
-    def setGender(self, gender):
+    def setGender(self, gender: (str, bool, None) = None):
         if str(type(gender)) == "<class 'str'>":
             if gender.lower() in ['male', 'female']:
                 self.gender = gender.lower()
@@ -63,10 +67,8 @@ class Person():
             self.gender = None
             printCLR('yel', '[W]')
             print(' gender is NOT set')
-        else:
-            raise ValueError('gender type must be \'str\' or \'bool\'')
 
-    def setComments(self, comments):
+    def setComments(self, comments=None):
         if str(type(comments)) == "<class 'list'>":
             self.comments = comments
             printCLR('gre', '[I]')
@@ -113,6 +115,7 @@ def Test():
     p1 = Person()
     p2 = Person('Bob', 16, 'male', 'He is a programmer in future...')
     p2.clear()
+
 
 if __name__ == '__main__':
     Test()
